@@ -1,24 +1,21 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { products } from "./mockData";
+// 2 Passo puxar  a tabela no js - DOM
+const tableContentTag = document.getElementById("tableContent");
+console.log(tableContentTag.innerHTML);
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+for (let i = 0; i < products.length; i++) {
+  tableContentTag.innerHTML += `
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              ${products[i].product}
+            </th>
+            <td class="px-6 py-4">
+            ${products[i].color}</td>
+            <td class="px-6 py-4">${products[i].product}</td>
+            <td class="px-6 py-4">$${products[i].price}</td>
+          </tr>
+`;
+}
